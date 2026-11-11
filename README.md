@@ -31,7 +31,7 @@ Matplotlib y se puede exportar a CSV.
 | `config.py` | Constantes, rutas y carga de la API Key desde `.env` |
 | `smoke_test.py` | Verificación rápida de shapes, checkpoint, figuras y API |
 | `data/` | CSV de entrenamiento y ficha metodológica |
-| `checkpoints/` | Pesos entrenados, curvas y matriz de confusión |
+| `checkpoints/` | Salida del entrenamiento: pesos, curvas y matrices (no se versiona) |
 
 ---
 
@@ -357,7 +357,10 @@ el cabezal se entrenó con otra distribución de entrada: úsalo como experiment
 
 ---
 
-## 9. Resultados del checkpoint incluido
+## 9. Resultados del checkpoint de referencia
+
+> El checkpoint **no se versiona**: es un artefacto de entrenamiento y está en
+> `.gitignore`. Se regenera con `python train.py` (~202 s en CPU).
 
 Entrenamiento: 6 épocas solicitadas, early stopping en la época 4, mejor época 2.
 Los valores exactos están en `checkpoints/training_report.json`.
