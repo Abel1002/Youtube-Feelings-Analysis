@@ -521,14 +521,3 @@ Protocolo de depuración de 5 minutos: ¿shape esperado? → ¿device correcto? 
 | 5 | Predicciones + `classification_report` | Softmax, métricas |
 | 6 | Dashboard con 4 gráficos y CSV | Comunicación de resultados |
 | 7 (opcional) | Fine-tuning parcial / LoRA | Transfer Learning avanzado |
-
----
-
-## 14. Créditos y contexto
-
-Proyecto didáctico del **Máster en PLN y Análisis de Sentimiento**. Construido
-sobre ideas de `agents.md`, `ProyectoInicial.md` y los apuntes de Deep Learning y
-Redes Neuronales.
-
-Las librerías, APIs y *skills* son medios; el objetivo evaluable es **explicar,
-experimentar y diagnosticar** el comportamiento del modelo.

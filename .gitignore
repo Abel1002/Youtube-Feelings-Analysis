@@ -30,9 +30,10 @@ checkpoints/*
 skills-lock.json
 
 # ============================================================
-# Notas de estudio locales (no se publican)
+# Documentos locales (no se publican)
 # ============================================================
 Teoria.md
+agents.md
 
 # ============================================================
 # Python
