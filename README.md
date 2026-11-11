@@ -162,7 +162,9 @@ Entrenamiento por defecto (feature extraction: backbone congelado):
 python train.py
 ```
 
-Equivale a:
+Los valores por defecto del CLI son `--epochs 3 --batch-size 16 --max-len 128
+--hidden-dim 256 --seed 42`, pensados para que una primera prueba no se eternice.
+La configuración con la que se generó el checkpoint de referencia del §9 fue esta:
 
 ```bash
 python train.py \
@@ -179,6 +181,11 @@ python train.py \
   --output checkpoints/best_sentiment_head.pt
 ```
 
+El número de épocas y el tamaño de lote sí cambian el resultado: con 6 épocas hay
+más oportunidades de mejorar el F1 macro (el early stopping corta igualmente) y un
+lote de 32 reduce a la mitad los pasos de optimizador por época, con un gradiente
+algo menos ruidoso. El resto de valores coincide con los defaults del CLI.
+
 Salidas:
 
 - `checkpoints/best_sentiment_head.pt` — pesos del cabezal y metadatos.
@@ -190,7 +197,7 @@ Salidas:
 
 El backbone congelado no se guarda: se reconstruye desde Hugging Face usando
 `model_name`. El checkpoint contiene el cabezal completo y, si se descongelaron
-capas, solo los pesos de esas capas. Así pasa de ~440 MB a ~1 MB y sigue siendo
+capas, solo los pesos de esas capas. Así pasa de ~435 MB a ~0,8 MB y sigue siendo
 reproducible.
 
 ### 6.2 Experimentos de entrenamiento
