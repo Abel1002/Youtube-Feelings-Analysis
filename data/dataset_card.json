@@ -1,0 +1,30 @@
+{
+  "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+  "config": "spanish",
+  "text_column": "text",
+  "label_column": "label",
+  "label_mapping": "negative=0, neutral=1, positive=2",
+  "license": "Consulta la ficha del dataset en Hugging Face.",
+  "notes": "Tuits reales en español con jerga y ruido. El cambio de dominio hacia comentarios de YouTube es una fuente de error en producción.",
+  "output": "C:\\Users\\Abel Perez\\Desktop\\PLN Youtube\\data\\sentiment_es.csv",
+  "created_at": "2026-11-10T14:48:45+00:00",
+  "total_rows": 3033,
+  "counts": {
+    "test": {
+      "Negativo": 290,
+      "Neutro": 290,
+      "Positivo": 290
+    },
+    "train": {
+      "Negativo": 613,
+      "Neutro": 613,
+      "Positivo": 613
+    },
+    "validation": {
+      "Negativo": 108,
+      "Neutro": 108,
+      "Positivo": 108
+    }
+  },
+  "cleaning": "Se eliminan URLs, menciones @usuario, espacios redundantes, textos vacíos y duplicados exactos. Se conservan emojis y acentos."
+}
