@@ -231,6 +231,10 @@ def build_checkpoint(
     El backbone congelado se reconstruye desde Hugging Face usando `model_name`.
     """
     trainable_names = {name for name, p in model.named_parameters() if p.requires_grad}
+    
+    # Obtener el state_dict completo del backbone antes de filtrar
+    backbone_state_dict_keys = [k for k in model.backbone.state_dict().keys()]
+    
     # `.clone()` es imprescindible: `detach().cpu()` comparte almacenamiento con
     # el parámetro vivo en CPU. Sin el clon, el checkpoint "en memoria" seguiría
     # cambiando mientras el entrenamiento continúa y guardaríamos pesos que no
@@ -242,10 +246,12 @@ def build_checkpoint(
     }
 
     backbone_saved = {k for k in state_dict if k.startswith("backbone.")}
-    backbone_param_names = {f"backbone.{name}" for name, _ in model.backbone.named_parameters()}
+    # Comprobar si el backbone está completamente guardado vs head_only
+    all_backbone_keys_count = len(all_backbone_keys)
+    saved_backbone_keys_count = len(saved_backbone_keys)
     if not backbone_saved:
         scope = "head_only"
-    elif backbone_saved >= backbone_param_names:
+    elif saved_backbone_keys_count == all_backbone_keys_count:
         scope = "full_model"
     else:
         scope = "head_plus_selected_backbone"
