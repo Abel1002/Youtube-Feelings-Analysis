@@ -364,24 +364,34 @@ el cabezal se entrenó con otra distribución de entrada: úsalo como experiment
 
 ---
 
-## 9. Resultados del checkpoint de referencia
+## 9. Resultados del checkpoint de referencia (para producción)
 
-> El checkpoint **no se versiona**: es un artefacto de entrenamiento y está en
-> `.gitignore`. Se regenera con `python train.py` (~202 s en CPU).
+> El checkpoint **se versiona** en el repositorio para que la app arranque lista:
+> - `checkpoints/best_sentiment_head.pt` (~0.8 MB): cabezal entrenado + metadatos
+> - `checkpoints/*.png`: curvas y matrices de confusión (diagnóstico)
+> - `checkpoints/training_report.json`: clasificación por clase
 
-Entrenamiento: 6 épocas solicitadas, early stopping en la época 4, mejor época 2.
-Los valores exactos están en `checkpoints/training_report.json`.
+**Configuración del checkpoint versionado:**
+- Backbone: `pysentimiento/robertuito-base-uncased` (congelado)
+- Pooling: `mean` | Dropout: 0.3 | hidden_dim: 256
+- Optimizador: AdamW | lr_head: 1e-3 | lr_backbone: 2e-5
+- Entrenamiento: 6 épocas, early stopping en época 4
+- Semilla: 42
+
+El F1 macro de validación es **0.650** con el criterio de checkpoint (mejor época guardada).
 
 | Métrica | Valor |
 |---|---|
 | Backbone | `pysentimiento/robertuito-base-uncased` |
 | Pooling | `mean` |
+| Dropout | 0.3 |
 | F1 macro validación | **0,650** |
 | Accuracy validación | **0,651** |
 | F1 macro test | **0,668** |
 | Accuracy test | **0,667** |
 | Parámetros entrenables | 199.171 / 108.986.371 (**0,18 %**) |
-| Tiempo de entrenamiento | ~202 s en CPU |
+| Tiempo de entrenamiento | ~200 s en CPU |
+| Checkpoint tamaño | ~0.8 MB (solo cabezal) |
 
 **Resultados por clase en test:**
 
