@@ -11,6 +11,7 @@
 # (se regeneran con: python train.py)
 # ============================================================
 checkpoints/*
+!checkpoints/best_sentiment_head.pt
 !checkpoints/.gitkeep
 
 # Pesos de modelos en cualquier formato
