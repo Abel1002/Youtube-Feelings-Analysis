@@ -1,0 +1,117 @@
+{
+  "config": {
+    "model_name": "pysentimiento/robertuito-base-uncased",
+    "num_classes": 3,
+    "pooling_type": "mean",
+    "dropout_rate": 0.3,
+    "hidden_dim": 256,
+    "freeze_backbone": true,
+    "max_len": 128,
+    "unfrozen_layers": 0
+  },
+  "training": {
+    "dataset": "C:\\Users\\Abel Perez\\Desktop\\PLN Youtube\\data\\sentiment_es.csv",
+    "val_dataset": null,
+    "n_train": 500,
+    "n_validation": 324,
+    "n_test": 870,
+    "epochs_requested": 3,
+    "optimizer": "AdamW",
+    "lr_head": 0.001,
+    "lr_backbone": 2e-05,
+    "weight_decay": 0.01,
+    "batch_size": 32,
+    "grad_clip": 1.0,
+    "seed": 42,
+    "device": "cpu",
+    "class_weights": null,
+    "train_distribution": {
+      "Negativo": 167,
+      "Neutro": 167,
+      "Positivo": 166
+    },
+    "validation_distribution": {
+      "Negativo": 108,
+      "Neutro": 108,
+      "Positivo": 108
+    },
+    "trained_at": "2026-11-18T09:05:15+00:00",
+    "epochs_run": 2,
+    "stopped_early": true
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.014696,
+      "train_acc": 0.474,
+      "val_loss": 0.838933,
+      "val_acc": 0.635802,
+      "val_f1": 0.626401,
+      "seconds": 18.92
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.683996,
+      "train_acc": 0.702,
+      "val_loss": 0.811805,
+      "val_acc": 0.611111,
+      "val_f1": 0.602641,
+      "seconds": 18.97
+    }
+  ],
+  "metrics": {
+    "best_val_f1_macro": 0.6264012114045941,
+    "best_val_accuracy": 0.6358024691358025,
+    "best_val_loss": 0.8389325710860166,
+    "best_epoch": 1,
+    "test_loss": 0.8862456317458834,
+    "test_accuracy": 0.5919540229885057,
+    "test_f1_macro": 0.5866625411787251,
+    "final_val_f1_macro": 0.6264012114045941,
+    "final_val_accuracy": 0.6358024691358025,
+    "final_val_loss": 0.8389325710860166,
+    "total_training_seconds": 37.89
+  },
+  "validation_report": "              precision    recall  f1-score   support\n\n    Negativo      0.608     0.806     0.693       108\n      Neutro      0.597     0.426     0.497       108\n    Positivo      0.702     0.676     0.689       108\n\n    accuracy                          0.636       324\n   macro avg      0.636     0.636     0.626       324\nweighted avg      0.636     0.636     0.626       324\n",
+  "test_report": "              precision    recall  f1-score   support\n\n    Negativo      0.575     0.700     0.631       290\n      Neutro      0.572     0.438     0.496       290\n    Positivo      0.627     0.638     0.632       290\n\n    accuracy                          0.592       870\n   macro avg      0.591     0.592     0.587       870\nweighted avg      0.591     0.592     0.587       870\n",
+  "confusion_matrix_validation": [
+    [
+      87,
+      15,
+      6
+    ],
+    [
+      37,
+      46,
+      25
+    ],
+    [
+      19,
+      16,
+      73
+    ]
+  ],
+  "confusion_matrix_test": [
+    [
+      203,
+      40,
+      47
+    ],
+    [
+      100,
+      127,
+      63
+    ],
+    [
+      50,
+      55,
+      185
+    ]
+  ],
+  "artifacts": {
+    "checkpoint": "C:\\Users\\Abel Perez\\Desktop\\PLN Youtube\\checkpoints\\best_sentiment_head.pt",
+    "training_curves": "C:\\Users\\Abel Perez\\Desktop\\PLN Youtube\\checkpoints\\training_curves.png",
+    "confusion_matrix_validation": "C:\\Users\\Abel Perez\\Desktop\\PLN Youtube\\checkpoints\\confusion_matrix_val.png",
+    "confusion_matrix_test": "C:\\Users\\Abel Perez\\Desktop\\PLN Youtube\\checkpoints\\confusion_matrix_test.png"
+  }
+}
